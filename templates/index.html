@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.c{
+  color:black;
+}
+.box{
+width:100%;
+  margin-top:50px;
+}
+.container{
+  margin-left:25%;
+}
+
+ 
+
+
+</style>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+</head>
+<body width="100%">
+  <nav class="navtop">
+
+                        <div>
+
+                                <h1>Autonomous driving
+
+</h1>
+
+                                <a href="{{ url_for('index') }}"><i class="fas fa-home"></i>Home</a>
+
+                                <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+
+		
+
+                                <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+
+                        </div>
+
+                </nav>
+<div>
+<div class="box" id="tb">
+
+   <table id="table"
+
+            border="1"
+
+            width="50%"
+
+            height="300"
+
+            cellspacing="5"
+            align="center"
+            
+>
+
+           
+
+            <thead>
+
+                <tr align="center" bgcolor="white">
+
+                   
+
+                    <th height="80px" colspan="4">초음파센서</th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody>
+
+                <tr align="center" bgcolor="white">
+
+                    <th>Date</th>
+		   
+                    {%if list[-1]==undefined%}
+                    <td class="date" colspan="3"></td>
+                    {%else%}
+                    <td class="hum" colspan="3">{{list[-1][0]}}</td> 
+                    {%endif%} 	
+                    
+                                    
+            
+                </tr>
+
+                 <tr align="center" bgcolor="white">
+                    <th >초음파</th>
+                    {%if list[-1]==undefined%}
+                    <td class="hum" colspan="3">None Data</td>
+                    {%else%}
+                    <td class="hum" colspan="3">{{list[-1][1]}}</td> 
+                    {%endif%} 
+                </tr>
+   		<tr align="center" bgcolor="white" style="width:0px;height:0px; ">
+
+                    
+		   
+                   
+                    <td class="date" colspan="3"></td>                     
+            
+                </tr>
+
+            </tbody>
+
+        </table>
+
+</div>
+       <button class="btn" style="width:100px; margin-left:25%; height:30px;" type="button">reset</button>
+
+
+    <div class="row" style="margin-left:25%;">
+
+        <div class="col-lg-8  offset-lg-2">
+
+            <h3 class="mt-5">Live Streaming</h3>
+
+            <img src="{{ url_for('video_feed') }}" width="67%" height="380px">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+var currentDate = document.querySelector(".date");
+var reset = document.querySelector("#tb");
+var btn = document.querySelector(".btn").addEventListener("click",function(e){
+ e.preventDefault();
+location.reload(true);
+});
+var time = new Date();
+var timeStr = time.toLocaleTimeString();
+currentDate.innerHTML=timeStr;
+
+
+window.addEventListener("DOMContentLoaded", function(event) {
+
+    	console.log(event);
+
+  });
+
+
+
+function autoRefresh_div()
+
+{
+
+
+$('#tb').load(document.URL +  ' #tb');
+
+}
+
+setInterval(autoRefresh_div, 2000);
+
+</script>
+
+</body>
+</html>

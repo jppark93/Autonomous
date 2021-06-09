@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<style>
+body{
+
+width:100%;
+background-color: white;
+}
+.profile{
+  position:relative;
+  align:center;
+  width:80%;
+  margin:60px auto 0 auto;
+  
+  
+}
+h2{
+ font-size:30px;
+ color:#7588a3;
+
+}
+.line{
+  width:100%;
+  height:3px;
+  border-top: 2px solid #cccccc; 
+  margin-bottom:20px;
+  
+}
+.td_color{
+font-size:20px;
+font-weight:800;
+ color:#7588a3;
+}
+</style>
+
+<body>
+<nav class="navtop">
+
+                        <div>
+
+                                <h1>Autonomous driving</h1>
+
+                                <a href="{{ url_for('index') }}"><i class="fas fa-home"></i>Home</a>
+
+                                <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+				
+
+                                <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+
+                        </div>
+
+                </nav>
+
+
+
+<div class="profile">
+    <h2>Profile Page</h2>
+
+    
+    <div class="line"></div>
+
+    <p class="box">Your account details are below:</p>
+     <table>
+
+        <tr>
+
+            <td class="td_color">Username:</td>
+
+            <td>{{ account[1] }}</td>
+
+        </tr>
+
+        <tr>
+
+            <td class="td_color">Password:</td>
+
+            <td>{{ account[2] }}</td>
+
+        </tr>
+
+        <tr>
+
+            <td class="td_color">Email:</td>
+
+            <td>{{ account[3] }}</td>
+
+        </tr>
+
+    </table>
+
+</div>
+</body>
